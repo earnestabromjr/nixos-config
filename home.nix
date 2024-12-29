@@ -62,7 +62,7 @@
   };
 
   #Nixpkgs
-  nixpkgs.config.allowUnfreePredicate = _: true;
+  nixpkgs.config.allowUnfreePredicate = true;
 
 
 
