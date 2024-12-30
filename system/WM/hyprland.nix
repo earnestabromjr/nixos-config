@@ -23,8 +23,9 @@ in {
     swww
   ];
 
+  hardware.graphics.enable = true;
+
   hardware.opengl = {
-    enable = true;
     package = pkgs-unstable.mesa.drivers;
   };
 }
