@@ -46,6 +46,7 @@
     nixdoc
     nil
     prettierd
+    live-server
     vscode-extensions.brettm12345.nixfmt-vscode
   ];
 
