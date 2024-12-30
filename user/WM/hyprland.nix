@@ -1,11 +1,8 @@
 { lib, pkgs, inputs, ... }:
 {
-  imports = [ inputs.hyprland-nix.homeManagerModules.default ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
-    reloadConfig = true;
     systemdIntegration = true;
     # recommendedEnvironment = false;
     # nvidiaPatches = true;
@@ -30,11 +27,11 @@
         follow_mouse = 1;
 
         touchpad = {
-            natural_scroll = "no";
+          natural_scroll = "no";
         };
       };
 
-      misc = {};
+      misc = { };
 
       general = {
         gaps_in = 1;
@@ -49,13 +46,13 @@
       decoration = {
         rounding = 15;
         blur = {
-            enabled = true;
-            new_optimizations = true;
-            size = 1; # minimum 1
-            passes = 1; # minimum 1, more passes = more resource intensive.
-            # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
-            # if you want heavy blur, you need to up the blur_passes.
-            # the more passes, the more you can up the blur_size without noticing artifacts.
+          enabled = true;
+          new_optimizations = true;
+          size = 1; # minimum 1
+          passes = 1; # minimum 1, more passes = more resource intensive.
+          # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
+          # if you want heavy blur, you need to up the blur_passes.
+          # the more passes, the more you can up the blur_size without noticing artifacts.
         };
       };
 
@@ -76,7 +73,7 @@
         force_split = 0;
       };
 
-      master = {};
+      master = { };
 
       gestures = {
         workspace_swipe = "yes";
@@ -172,13 +169,13 @@
 
       submap = {
         resize = [
-            ", right, resizeactive, 10 0"
-            ", left, resizeactive, -10 0"
-            ", up, resizeactive, 0 -10"
-            ", down, resizeactive, 0 10"
+          ", right, resizeactive, 10 0"
+          ", left, resizeactive, -10 0"
+          ", up, resizeactive, 0 -10"
+          ", down, resizeactive, 0 10"
         ];
         reset = [
-            ", escape, submap, reset"
+          ", escape, submap, reset"
         ];
       };
     };
