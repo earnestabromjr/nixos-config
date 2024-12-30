@@ -60,8 +60,6 @@
   #Nixpkgs
   nixpkgs.config.allowUnfreePredicate = _: true;
 
-
-
-  # Let Home Manager install and manage itself.
+    # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
