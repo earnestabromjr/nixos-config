@@ -44,11 +44,7 @@
     nixd
     nixdoc
     nil
-    wofi
-    dmenu
-    waybar
-    dunst
-    pcmanfm
+
     vscode-extensions.brettm12345.nixfmt-vscode
   ];
 
@@ -62,7 +58,7 @@
   };
 
   #Nixpkgs
-  nixpkgs.config.allowUnfreePredicate = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
 
 
 

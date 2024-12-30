@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./system/WM/hyprland.nix
     ];
 
   options = {
@@ -134,7 +135,7 @@
     xdg.portal = {
         enable = true;
         config.common.default = "*";
-        extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr];
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr ];
     };
 
     # List services that you want to enable:
@@ -164,14 +165,6 @@
         (nerdfonts.override {fonts = [ "Hack" "JetBrainsMono" "FiraCode" "DroidSansMono" ];})
         ];
         fontconfig.enable = true;
-    };
-
-    # Hyprland
-    programs.hyprland = {
-        enable = true;
-        xwayland.enable = true;
-        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     # Networking
