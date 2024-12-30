@@ -30,6 +30,7 @@
       egrep = "egrep --color=auto";
       cd = "z";
       ".." = "cd ..";
+      neovim = "nix run ~/neovim-flake# ";
     };
   };
 }
