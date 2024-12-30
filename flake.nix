@@ -12,7 +12,7 @@
     # specified above, which are locked by you.
     hyprland-nix.url = "github:spikespaz/hyprland-nix";
     hyprland-nix.inputs = {
-        hyprland.follows = "hyprland-git";
+        hyprland.follows = "hyprland";
         hyprland-xdph.follows = "hyprland-xdph-git";
         hyprland-protocols.follows = "hyprland-protocols-git";
     };
