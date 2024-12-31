@@ -25,7 +25,6 @@
     hyprland-workspaces
     hyprlandPlugins.hyprexpo
     libdrm
-    wayland-client
     wayland-protocols
   ];
 }
