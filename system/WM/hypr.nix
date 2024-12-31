@@ -17,5 +17,7 @@
     pcmanfm
     libnotify
     swww
+    hyprland-workspaces
+    hyprlandPlugins.hyprexpo
   ];
 }
