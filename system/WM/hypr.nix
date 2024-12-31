@@ -25,8 +25,6 @@
     hyprland-workspaces
     hyprlandPlugins.hyprexpo
     libdrm
-    libpipewire-0.3
-    libpsa-0.2
     wayland-client
     wayland-protocols
   ];
