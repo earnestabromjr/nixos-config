@@ -18,7 +18,6 @@
     pcmanfm
     libnotify
     swww
-    gbm
     hyprland-protocols
     hyprland
     hyprutils
