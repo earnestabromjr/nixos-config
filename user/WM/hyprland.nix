@@ -2,8 +2,9 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
-    systemd.enable = true;
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+    ];
     # recommendedEnvironment = false;
     # nvidiaPatches = true;
 
@@ -118,8 +119,7 @@
         "$mod, E, exec, zeditor"
         "$mod, C, exec, codium"
         "$mod, S, togglefloating,"
-        "$mod, space, exec, rofi --show drun -o DP-3"
-        "$mod, slash, exec, dmenu;"
+        "$mod, space, exec, rofi -show drun -o DP-3"
         "$mod, P, pseudo,"
         "$mod, L, exec, ~/.config/hypr/scripts/lock"
         "$mod, left, movefocus, l"
@@ -165,6 +165,7 @@
         "CTRL, 4, exec, kitty --title clock_is_kitty --hold tty-clock -C5"
         # i3 window rules
         "ALT, R, submap, resize"
+        "$mod, grave, hyperexpo:expo, toggle"
       ];
 
       submap = {
@@ -177,6 +178,14 @@
         reset = [
           ", escape, submap, reset"
         ];
+      };
+      plugin = {
+        hyprexpo = {
+          columns = 3;
+          gap_size = 5;
+          bg_col = "rgb(111111)";
+          workspace_method = "center current";
+        };
       };
     };
   };

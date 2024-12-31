@@ -6,6 +6,10 @@
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     # hyprland-xdph-git.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     # hyprland-protocols-git.url = "github:hyprwm/xdg-desktop-portal-hyprland";
     # # This overrides each input for `hyprland-nix` to use the ones
@@ -18,7 +22,7 @@
     # };
   };
 
-  outputs = { nixpkgs, home-manager, ...} @ inputs:
+  outputs = { nixpkgs, home-manager, hyprland ...} @ inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -36,7 +40,15 @@
     homeConfigurations = {
       terrya = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix];
+        modules = 
+        [
+          ./home.nix 
+          wayland.windowManager.hyprland = {
+            enable = true;
+            # set the flake package
+            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+          }; 
+        ];
       };
     };
   };
