@@ -4,7 +4,7 @@
   imports = [
     ./user/shells/sh.nix
     ./user/terminals/kitty.nix
-    #./user/WM/hyprland.nix
+    ./user/WM/hyprland.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -48,9 +48,7 @@
     prettierd
     live-server
     vscode-extensions.brettm12345.nixfmt-vscode
-  ] ++ (if (config.programs.hyprland.enable == true)
-      then [ pkgs.fuzzel ]
-      else []);
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

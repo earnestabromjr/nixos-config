@@ -22,7 +22,7 @@
     # };
   };
 
-  outputs = { nixpkgs, home-manager, hyprland ...} @ inputs:
+  outputs = { nixpkgs, home-manager, hyprland, ... } @ inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -43,11 +43,6 @@
         modules = 
         [
           ./home.nix 
-          wayland.windowManager.hyprland = {
-            enable = true;
-            # set the flake package
-            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-          }; 
         ];
       };
     };

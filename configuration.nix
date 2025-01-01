@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./system/WM/hypr.nix
-      # ./system/WM/hyprland.nix
+      #./system/WM/hyprland.nix
     ];
   options = {
 
