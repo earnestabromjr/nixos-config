@@ -14,6 +14,7 @@
   programs = {
     nm-applet.indicator = true;
   };
+  service.hypridle.enable = true;
   environment.systemPackages = with pkgs; [
     (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -27,6 +28,7 @@
     swww
     hyprland-protocols
     hyprland
+    hyprlock
     hyprutils
     hyprwayland-scanner
     hyprland-workspaces
