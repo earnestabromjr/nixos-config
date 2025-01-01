@@ -32,7 +32,6 @@
     hyprutils
     hyprwayland-scanner
     hyprland-workspaces
-    hyprlandPlugins.hyprexpo
     libdrm
     wayland-protocols
     dconf
