@@ -12,6 +12,7 @@
     xwayland.enable = true;
   };
   programs = {
+    nm-applet.enable = true;
     nm-applet.indicator = true;
   };
   services.hypridle.enable = true;

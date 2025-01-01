@@ -5,6 +5,7 @@
     plugins = [
       pkgs.hyprlandPlugins.hyprexpo
     ];
+    systemd.variables = ["--all"];
     # recommendedEnvironment = false;
     # nvidiaPatches = true;
 
