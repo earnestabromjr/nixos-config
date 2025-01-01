@@ -12,8 +12,6 @@
     xwayland.enable = true;
   };
   programs = {
-    hyprlock.enable = true;
-    hypridle.enable = true;
     nm-applet.indicator = true;
   };
   environment.systemPackages = with pkgs; [
