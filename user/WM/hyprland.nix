@@ -9,7 +9,7 @@
     # nvidiaPatches = true;
 
     settings = {
-      monitor = [ "preferred" "auto" "1" ];
+      monitor = "preferred" "auto" "1";
 
       exec-once = [
         "$HOME/.config/hypr/autostart"
