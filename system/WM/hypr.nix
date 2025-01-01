@@ -13,6 +13,7 @@
   };
   programs = {
     hyprlock.enable = true;
+    hyperidle.enable = true;
     nm-applet.indicator = true;
   };
   environment.systemPackages = with pkgs; [
