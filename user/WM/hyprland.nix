@@ -164,21 +164,9 @@
         "CTRL, 3, exec, kitty --single-instance --hold donut.c"
         "CTRL, 4, exec, kitty --title clock_is_kitty --hold tty-clock -C5"
         # i3 window rules
-        "ALT, R, submap, resize"
         "$mod, grave, hyperexpo:expo, toggle"
       ];
 
-      submap = {
-        resize = [
-          ", right, resizeactive, 10 0"
-          ", left, resizeactive, -10 0"
-          ", up, resizeactive, 0 -10"
-          ", down, resizeactive, 0 10"
-        ];
-        reset = [
-          ", escape, submap, reset"
-        ];
-      };
       plugin = {
         hyprexpo = {
           columns = 3;
