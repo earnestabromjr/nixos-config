@@ -164,17 +164,7 @@
         "CTRL, 3, exec, kitty --single-instance --hold donut.c"
         "CTRL, 4, exec, kitty --title clock_is_kitty --hold tty-clock -C5"
         # i3 window rules
-        "$mod, grave, hyperexpo:expo, toggle"
       ];
-
-      plugin = {
-        hyprexpo = {
-          columns = 3;
-          gap_size = 5;
-          bg_col = "rgb(111111)";
-          workspace_method = "center current";
-        };
-      };
     };
   };
 }
