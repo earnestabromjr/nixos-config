@@ -12,7 +12,7 @@
     xwayland.enable = true;
   };
   programs = {
-    hyperlock.enable = true;
+    hyprlock.enable = true;
     nm-applet.indicator = true;
   };
   environment.systemPackages = with pkgs; [
