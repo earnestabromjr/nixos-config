@@ -14,7 +14,7 @@
   programs = {
     nm-applet.indicator = true;
   };
-  service.hypridle.enable = true;
+  services.hypridle.enable = true;
   environment.systemPackages = with pkgs; [
     (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
