@@ -36,6 +36,7 @@
       misc = { };
 
       general = {
+        layout = "dwindle";
         gaps_in = 1;
         gaps_out = 1;
         border_size = 1;
@@ -75,7 +76,10 @@
         force_split = 0;
       };
 
-      master = { };
+      master = { 
+        mfact = 0.65;
+        new_status = "slave";
+      };
 
       gestures = {
         workspace_swipe = "yes";
