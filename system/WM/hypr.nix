@@ -35,5 +35,8 @@
     libdrm
     wayland-protocols
     dconf
+    cmake
+    meson
+    cpio
   ];
 }
