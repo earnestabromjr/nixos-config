@@ -28,6 +28,7 @@
     brave
     librewolf
     bitwarden-desktop
+    fh
     git
     gitkraken
     github-cli
