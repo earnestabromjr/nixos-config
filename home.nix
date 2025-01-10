@@ -20,7 +20,6 @@
     alejandra
     vscode-with-extensions
     vscodium-fhs
-    direnv
     ripgrep
     zoxide
     unzip
@@ -60,6 +59,7 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+  programs.direnv.nix-direnv.enable = true;
 
   #Nixpkgs
   nixpkgs.config.allowUnfreePredicate = _: true;
