@@ -35,6 +35,7 @@
     hyprland-workspaces
     libdrm
     wayland-protocols
+    wl-clipboard
     dconf
     cmake
     meson
