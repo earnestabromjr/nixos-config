@@ -11,8 +11,8 @@
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
-    icons = true;
-    colors = true;
+    icons = "auto";
+    colors = "auto";
     git = true;
   };
 }
