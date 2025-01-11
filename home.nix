@@ -34,6 +34,7 @@
     gitkraken
     github-cli
     neovim
+    lazygit
     gnupg
     python3
     bat
