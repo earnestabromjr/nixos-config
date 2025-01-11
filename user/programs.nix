@@ -7,9 +7,12 @@
     nix-direnv.enable = true;
   };
 
-  # Exa
+  # Eza
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
+    icons = true;
+    colors = true;
+    git = true;
   };
 }
