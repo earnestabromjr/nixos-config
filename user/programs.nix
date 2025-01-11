@@ -10,6 +10,6 @@
   # Exa
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableZshIntegration = true;
   };
 }
