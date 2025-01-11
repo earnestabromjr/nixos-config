@@ -31,6 +31,7 @@
       cd = "z";
       ".." = "cd ..";
       neovim = "nix run ~/neovim-flake# ";
+      homerun = "home-manager switch --flake .";
     };
   };
 }

@@ -5,6 +5,7 @@
     ./user/shells/sh.nix
     ./user/terminals/kitty.nix
     ./user/WM/hyprland.nix
+    ./user/programs.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -59,7 +60,6 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  programs.direnv.nix-direnv.enable = true;
 
   #Nixpkgs
   nixpkgs.config.allowUnfreePredicate = _: true;
