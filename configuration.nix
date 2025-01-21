@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./system/WM/hypr.nix
+      ./system/WM/hypr.nix
       ./system/virt.nix
       #./system/WM/hyprland.nix
     ];
