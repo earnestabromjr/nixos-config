@@ -2,8 +2,8 @@
   description = "A simple example of a test suite";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
@@ -34,17 +34,16 @@
         inherit system;
         modules = [
           ./configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nixuser = import ./home.nix;
+          }
         ];
       };
     };
-    homeConfigurations = {
-      terrya = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = 
-        [
-          ./home.nix 
-        ];
-      };
-    };
+    
   };
 }

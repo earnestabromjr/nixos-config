@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ./system/WM/hypr.nix
-      ./system/virt.nix
+      #./system/virt.nix
       #./system/WM/hyprland.nix
     ];
   options = {
@@ -18,9 +18,11 @@
 
   config = {
     # Bootloader.
-    boot.loader.grub.enable = true;
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.useOSProber = true;
+    # boot.loader.grub.enable = true;
+    # boot.loader.grub.device = "/dev/sda";
+    # boot.loader.grub.useOSProber = true;
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
     networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -52,11 +54,14 @@
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
+    # Enable the Cinnamon Desktop Environment.
+    services.xserver.displayManager.lightdm.enable = true;
+    services.xserver.desktopManager.cinnamon.enable = true;
 
     # Enable the Budgie Desktop environment.
-    services.displayManager.sddm.enable = true;
+    #services.displayManager.sddm.enable = true;
     #  services.xserver.desktopManager.budgie.enable = true;
-    services.desktopManager.plasma6.enable = true;
+    #services.desktopManager.plasma6.enable = true;
 
     # Configure keymap in X11
     services.xserver.xkb = {
@@ -64,6 +69,11 @@
         variant = "";
         options = "caps:escape";
     };
+
+    # Enable quemu guest agent
+    services.qemuGuest.enable = true;
+    services.spice-vdagentd.enable = true; 
+    services.spice-webdavd.enable = true;
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
@@ -88,7 +98,7 @@
     # services.xserver.libinput.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.terrya = {
+    users.users.nixuser = {
         isNormalUser = true;
         description = "Terry Abrom";
         extraGroups = [
@@ -137,7 +147,7 @@
     xdg.portal = {
         enable = true;
         config.common.default = "*";
-        extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr ];
+        extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
     };
 
     # List services that you want to enable:
@@ -166,15 +176,16 @@
         noto-fonts-emoji
         font-awesome
         source-han-sans
-        (nerdfonts.override {fonts = [ "Hack" "JetBrainsMono" "FiraCode" "DroidSansMono" ];})
         ];
+
         fontconfig.enable = true;
     };
+
 
     # Networking
     networking.firewall.enable = false;
 
     # NixOS Version
-    system.stateVersion = "24.11"; # Did you read the comment?
+    system.stateVersion = "25.05"; # Did you read the comment?
   };
 }

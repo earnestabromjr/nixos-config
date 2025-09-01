@@ -4,7 +4,7 @@
   #Kitty Config
   programs.kitty = {
     enable = true;
-    font.package = pkgs.nerdfonts;
+    font.package = pkgs.nerd-fonts.jetbrains-mono;
     font.name = "JetBrainsMono";
     extraConfig = "
       # Font family. You can also specify different fonts for the
