@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./user/shells/sh.nix
+    # ./user/shells/sh.nix
     ./user/terminals/kitty.nix
     # ./user/WM/hyprland.nix
     ./user/programs.nix
@@ -12,12 +12,47 @@
   home.username = "terrya";
   home.homeDirectory = "/home/terrya";
 
+# Zsh
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "af-magic";
+      plugins = [
+        "aliases"
+        "fzf"
+        "git"
+        "systemadmin"
+        "systemd"
+        "zoxide"
+        "zsh-interactive-cd"
+        "zsh-navigation-tools"
+      ];
+    };
+    shellAliases = {
+      ls = "ls --color=auto";
+      ll = "ls -l";
+      la = "ls -la";
+      grep = "grep --color=auto";
+      fgrep = "fgrep --color=auto";
+      egrep = "egrep --color=auto";
+      cd = "z";
+      ".." = "cd ..";
+      nixrebuild = "sudo nixos-rebuild switch --flake .#nixos && sudo systemctl daemon-reload";
+      neovim = "nix run ~/neovim-flake# ";
+      homerun = "home-manager switch --flake .";
+      dbeb = "distrobox enter ubuntu";
+    };
+  };
 
-  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    codeium
     alejandra
     vscode-with-extensions
     vscodium-fhs
@@ -62,9 +97,5 @@
     # EDITOR = "emacs";
   };
 
-  #Nixpkgs
-  nixpkgs.config.allowUnfreePredicate = _: true;
-
-    # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 }

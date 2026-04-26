@@ -15,4 +15,12 @@
     colors = "auto";
     git = true;
   };
+
+  programs.claude-code = {
+    enable = true;
+  };
+  
+  programs.opencode = {
+      enable = true;
+  };
 }
