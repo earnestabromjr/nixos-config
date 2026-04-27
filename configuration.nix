@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
@@ -13,13 +11,27 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./system/services.nix
     ./system/virt.nix
+    ./system/WM/qtile.nix
     ./system/WM/dms.nix
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Decrypt and mount luks btrfs drive
+  systemd.services."systemd-cryptsetup@arch" = {
+    enable = true;
+  };
+  environment.etc."crypttab" = {
+    text = "arch UUID=85ce3c95-b34b-4015-8d0a-4b1ee1764908 none luks";
+    mode = "0644";
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -53,9 +65,10 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  # services.displayManager.cosmic-greeter.enable = true;
-  # services.desktopManager.cosmic.enable = true;
-  services.displayManager.gdm.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  # services.displayManager.gdm.enable = true;
+  # services.displayManager.defaultSession = "niri";
   services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
@@ -152,6 +165,14 @@
     antigravity-fhs
     devbox
     valent
+    python313Packages.qtile-extras
+    rofi
+    waybar
+    dunst
+    pcmanfm
+    libnotify
+    awww
+    rsync
   ];
 
   virtualisation.libvirtd.enable = true;
@@ -187,6 +208,11 @@
 
   # Nix features
   nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
     settings = {
       warn-dirty = false;
       experimental-features = [

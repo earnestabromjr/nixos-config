@@ -6,14 +6,6 @@
     enable = true;
     font.name = "JetBrainsMono";
     extraConfig = "
-      # Font family. You can also specify different fonts for the
-      # bold/italic/bold-italic variants. By default they are derived automatically,
-      # by the OSes font system. Setting them manually is useful for font families
-      # that have many weight variants like Book, Medium, Thick, etc. For example:
-      # font_family Operator Mono Book
-      # bold_font Operator Mono Thick
-      # bold_italic_font Operator Mono Medium
-      # font_family      Input Mono
       font_family      Hack Nerd Font Mono
       italic_font      auto
       bold_font        auto

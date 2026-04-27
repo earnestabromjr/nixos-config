@@ -3,7 +3,7 @@
 {
   imports = [
     # ./user/shells/sh.nix
-    ./user/terminals/kitty.nix
+    # ./user/terminals/kitty.nix
     # ./user/WM/hyprland.nix
     ./user/programs.nix
   ];
@@ -12,7 +12,7 @@
   home.username = "terrya";
   home.homeDirectory = "/home/terrya";
 
-# Zsh
+  # Zsh
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -48,6 +48,7 @@
     };
   };
 
+  # SSh
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -80,12 +81,14 @@
     lua
     stow
     zed-editor
+    antigravity-fhs
     nixd
     nixdoc
     nil
     prettierd
     live-server
     vscode-extensions.brettm12345.nixfmt-vscode
+    ghostty
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
