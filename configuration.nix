@@ -173,6 +173,8 @@
     libnotify
     awww
     rsync
+    vivaldi
+    vivaldi-ffmpeg-codecs
   ];
 
   virtualisation.libvirtd.enable = true;
@@ -224,6 +226,9 @@
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
+
+  # Security
+  security.sudo.wheelNeedsPassword = false;
 
   # Fonts
   fonts = {
