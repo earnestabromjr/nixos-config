@@ -24,6 +24,9 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable Containers
+  boot.enableContainers = true;
+
   # Decrypt and mount luks btrfs drive
   systemd.services."systemd-cryptsetup@arch" = {
     enable = true;
@@ -140,6 +143,8 @@
     vim
     wget
     hwinfo
+    htop
+    btop
     neovim
     cryptsetup
     stow
@@ -173,8 +178,13 @@
     libnotify
     awww
     rsync
-    vivaldi
-    vivaldi-ffmpeg-codecs
+    fd
+    glances
+    ansible
+    ansible-lint
+    sshpass
+    terraform
+    packer
   ];
 
   virtualisation.libvirtd.enable = true;
@@ -226,9 +236,6 @@
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
-
-  # Security
-  security.sudo.wheelNeedsPassword = false;
 
   # Fonts
   fonts = {

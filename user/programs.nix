@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
   programs.direnv = {
@@ -19,8 +19,13 @@
   programs.claude-code = {
     enable = true;
   };
-  
+
   programs.opencode = {
-      enable = true;
+    enable = true;
+  };
+
+  programs.television = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }

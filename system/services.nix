@@ -18,4 +18,10 @@
   services.duplicati = {
     enable = true;
   };
+
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+
+  };
 }
