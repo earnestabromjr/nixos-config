@@ -28,4 +28,8 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  programs.tmux.plugins = with pkgs; [
+  tmuxPlugins.tokyo-night-tmux
+  ];
 }

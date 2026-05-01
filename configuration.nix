@@ -3,6 +3,8 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -136,6 +138,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "codeium"
+    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -145,7 +152,6 @@
     hwinfo
     htop
     btop
-    neovim
     cryptsetup
     stow
     git
@@ -170,7 +176,7 @@
     antigravity-fhs
     devbox
     valent
-    python313Packages.qtile-extras
+    (python313Packages.qtile-extras.overridePythonAttrs (old: { doCheck = false; }))
     rofi
     waybar
     dunst

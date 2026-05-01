@@ -1,8 +1,17 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  lazyvim,
+  ...
+}:
 
+let
+  lazyvimModule = lazyvim.homeManagerModules.default;
+in
 {
   imports = [
-    inputs.lazyvim.homeManagerModules.default
+    lazyvimModule
     # ./user/shells/sh.nix
     # ./user/terminals/kitty.nix
     # ./user/WM/hyprland.nix
@@ -14,7 +23,30 @@
   home.homeDirectory = "/home/terrya";
 
   # Lazyvim flake
-  progams.lazyvim.enable = true;
+  programs.lazyvim = {
+    installCoreDependencies = true;
+    enable = true;
+    extras = {
+      lang.nix.enable = true;
+      lang.docker.enable = true;
+      editor.telescope.enable = true;
+      editor.fzf.enable = true;
+      ai.codeium.enable = true;
+    };
+    extraPackages = with pkgs; [
+      # Nix ecosystem
+      nixd # Nix language server
+      alejandra # Nix formatter
+
+      # Additional tools
+      tree-sitter # CLI for grammar development
+      fzf # Fuzzy finder
+      gh # GitHub CLI
+
+      # Custom language support
+      postgresql # Database CLI tools
+    ];
+  };
 
   # Zsh
   programs.zsh = {
@@ -34,7 +66,8 @@
         "zoxide"
         "zsh-interactive-cd"
         "zsh-navigation-tools"
-        "theme"
+        "themes"
+        "tmux"
         "direnv"
         "tailscale"
       ];
@@ -53,7 +86,7 @@
       vl = "NVIM_APPNAM=lazyvim nvim";
       homerun = "home-manager switch --flake .";
       dbeb = "distrobox enter ubuntu";
-      sudoedit = "sudo -E nvim ";
+      sudovim = "sudo -E nvim ";
     };
   };
 
@@ -78,7 +111,6 @@
     git
     gitkraken
     github-cli
-    neovim
     lazygit
     gnupg
     python3
@@ -98,10 +130,17 @@
     live-server
     vscode-extensions.brettm12345.nixfmt-vscode
     ghostty
+    tmuxPlugins.tokyo-night-tmux
   ];
 
   # tailscale
   services.tailscale-systray.enable = true;
+
+  # Sceensaver
+  services.xscreensaver.enable = true;
+  services.xscreensaver.settings = {
+    lock = false;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
