@@ -15,6 +15,7 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lazyvim.url = "github:pfassina/lazyvim-nix";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       self,
       nixpkgs,
       home-manager,
+      lazyvim,
       ...
     }@inputs:
     {

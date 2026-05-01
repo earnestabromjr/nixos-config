@@ -185,6 +185,7 @@
     sshpass
     terraform
     packer
+    luajitPackages.lua-lsp
   ];
 
   virtualisation.libvirtd.enable = true;

@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
+    inputs.lazyvim.homeManagerModules.default
     # ./user/shells/sh.nix
     # ./user/terminals/kitty.nix
     # ./user/WM/hyprland.nix
@@ -11,6 +12,9 @@
   # manage.
   home.username = "terrya";
   home.homeDirectory = "/home/terrya";
+
+  # Lazyvim flake
+  progams.lazyvim.enable = true;
 
   # Zsh
   programs.zsh = {
@@ -30,6 +34,9 @@
         "zoxide"
         "zsh-interactive-cd"
         "zsh-navigation-tools"
+        "theme"
+        "direnv"
+        "tailscale"
       ];
     };
     shellAliases = {
@@ -43,8 +50,10 @@
       ".." = "cd ..";
       nixrebuild = "sudo nixos-rebuild switch --flake .#nixos && sudo systemctl daemon-reload";
       neovim = "nix run ~/neovim-flake# ";
+      vl = "NVIM_APPNAM=lazyvim nvim";
       homerun = "home-manager switch --flake .";
       dbeb = "distrobox enter ubuntu";
+      sudoedit = "sudo -E nvim ";
     };
   };
 
