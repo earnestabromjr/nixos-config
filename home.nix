@@ -144,6 +144,7 @@ in
     ghostty
     tmuxPlugins.tokyo-night-tmux
     statix
+    lazydocker
   ];
 
   # tailscale

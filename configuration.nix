@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ./system/services.nix
     ./system/virt.nix
+    ./system/containers/pegaprox.nix
     ./system/WM/qtile.nix
     ./system/WM/dms.nix
   ];
