@@ -58,6 +58,13 @@ in
       # Custom language support
       postgresql # Database CLI tools
     ];
+    plugins.ssh = ''
+      return {
+        "nosduco/remote-sshfs.nvim",
+        dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
+        opts = { ui = { picker = "fzf-lua" } },
+      }
+    '';
   };
 
   # Zsh

@@ -17,7 +17,7 @@
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/pegaprox/config 0755 root root -"
-    "d /var/lib/pegaprox/logs 0755 root root -"
+    "d /var/lib/pegaprox/config 0777 root root -"
+    "d /var/lib/pegaprox/logs 0777 root root -"
   ];
 }
