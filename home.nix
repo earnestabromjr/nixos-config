@@ -140,6 +140,8 @@
     lock = false;
   };
 
+  programs.home-manager.enable = true;
+
   home.file = { };
   home.sessionVariables = { };
 
