@@ -7,10 +7,15 @@
     # ./user/WM/hyprland.nix
     ./user/programs.nix
   ];
-
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
   home.username = "terrya";
   home.homeDirectory = "/home/terrya";
 
+  # Important neovim dirs
+  # Create important Neovim directories at activation time. Use postActivation
+  # which does not rely on home-manager's `lib.hm` helpers and is safe during
+  # evaluation from the flake outputs.
   home.activation.postActivation = ''
     mkdir -p "$HOME/.local/state/nvim/undo"
     mkdir -p "$HOME/.local/share/nvim/swap"
@@ -19,6 +24,7 @@
     mkdir -p "$HOME/.cache/nvim/catppuccin"
   '';
 
+  # Lazyvim flake
   programs.lazyvim = {
     enable = true;
     installCoreDependencies = true;
@@ -35,12 +41,17 @@
       ai.codeium.enable = true;
     };
     extraPackages = with pkgs; [
-      nixd
-      alejandra
-      tree-sitter
-      fzf
-      gh
-      postgresql
+      # Nix ecosystem
+      nixd # Nix language server
+      alejandra # Nix formatter
+
+      # Additional tools
+      tree-sitter # CLI for grammar development
+      fzf # Fuzzy finder
+      gh # GitHub CLI
+
+      # Custom language support
+      postgresql # Database CLI tools
     ];
     plugins.ssh = ''
       return {
@@ -51,6 +62,7 @@
     '';
   };
 
+  # Zsh
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -92,6 +104,10 @@
     };
   };
 
+  # SSh
+
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
   home.packages = with pkgs; [
     codeium
     alejandra
@@ -133,15 +149,23 @@
     lazydocker
   ];
 
+  # tailscale
   services.tailscale-systray.enable = true;
 
+  # Sceensaver
   services.xscreensaver.enable = true;
   services.xscreensaver.settings = {
     lock = false;
   };
 
-  home.file = { };
-  home.sessionVariables = { };
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+  };
 
-  home.stateVersion = "26.05";
+  home.sessionVariables = {
+    # EDITOR = "emacs";
+  };
+
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 }
