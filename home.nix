@@ -22,15 +22,27 @@ in
   home.username = "terrya";
   home.homeDirectory = "/home/terrya";
 
+  # Important neovim dirs
+  home.activation.createNvimDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ${config.home.homeDirectory}/.local/state/nvim/undo
+    mkdir -p ${config.home.homeDirectory}/.local/share/nvim/{swap,sessions,shada}
+    mkdir -p ${config.home.homeDirectory}/.cache/nvim/catppuccin
+  '';
+
   # Lazyvim flake
   programs.lazyvim = {
-    installCoreDependencies = true;
     enable = true;
+    installCoreDependencies = true;
+    config.options = ''
+      vim.opt.directory = vim.fn.expand("~/.local/share/nvim/swap//")
+    '';
     extras = {
       lang.nix.enable = true;
       lang.docker.enable = true;
       editor.telescope.enable = true;
       editor.fzf.enable = true;
+      editor.leap.enable = true;
+      editor.snacks_picker.enable = true;
       ai.codeium.enable = true;
     };
     extraPackages = with pkgs; [
@@ -81,7 +93,7 @@ in
       egrep = "egrep --color=auto";
       cd = "z";
       ".." = "cd ..";
-      nixrebuild = "sudo nixos-rebuild switch --flake .#nixos && sudo systemctl daemon-reload";
+      nixrebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos && sudo systemctl daemon-reload";
       neovim = "nix run ~/neovim-flake# ";
       vl = "NVIM_APPNAM=lazyvim nvim";
       homerun = "home-manager switch --flake .";
@@ -131,6 +143,7 @@ in
     vscode-extensions.brettm12345.nixfmt-vscode
     ghostty
     tmuxPlugins.tokyo-night-tmux
+    statix
   ];
 
   # tailscale
