@@ -1,15 +1,23 @@
-{ config, lib, pkgs, lazyvimModule ? null, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  lazyvimModule ? null,
+  ...
+}:
 
 {
-  imports = (if lazyvimModule != null then [ lazyvimModule ] else []) ++ [
+  imports = (if lazyvimModule != null then [ lazyvimModule ] else [ ]) ++ [
     # ./user/shells/sh.nix
     # ./user/terminals/kitty.nix
     # ./user/WM/hyprland.nix
     ./user/programs.nix
   ];
 
-  home.username = "terrya";
-  home.homeDirectory = "/home/terrya";
+  home = {
+    username = "terrya";
+    homeDirectory = "/home/terrya";
+  };
 
   home.activation.postActivation = ''
     mkdir -p "$HOME/.local/state/nvim/undo"
@@ -28,10 +36,12 @@
     extras = {
       lang.nix.enable = true;
       lang.docker.enable = true;
-      editor.telescope.enable = true;
-      editor.fzf.enable = true;
-      editor.leap.enable = true;
-      editor.snacks_picker.enable = true;
+      editor = {
+        telescope.enable = true;
+        fzf.enable = true;
+        leap.enable = true;
+        snacks_picker.enable = true;
+      };
       ai.codeium.enable = true;
     };
     extraPackages = with pkgs; [
@@ -133,13 +143,12 @@
     lazydocker
   ];
 
-  services.tailscale-systray.enable = true;
-
-  services.xscreensaver.enable = true;
-  services.xscreensaver.settings = {
-    lock = false;
+  services = {
+    tailscale-systray.enable = true;
   };
-
+  qt = {
+    kvantum.enable = true;
+  };
   programs.home-manager.enable = true;
 
   home.file = { };
