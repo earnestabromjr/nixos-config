@@ -33,12 +33,14 @@
   };
 
   # Decrypt and mount luks btrfs drive
-  systemd.services."systemd-cryptsetup@arch" = {
-    enable = true;
-  };
   environment.etc."crypttab" = {
-    text = "arch UUID=85ce3c95-b34b-4015-8d0a-4b1ee1764908 none luks";
+    text = "arch UUID=ab39df73-f1d1-4bcc-9699-ad55088daa18 /etc/secrets/riot.key luks,nofail";
     mode = "0644";
+  };
+  fileSystems."/mnt/riot" = {
+    device = "/dev/mapper/arch";
+    fsType = "btrfs";
+    options = [ "defaults" "nofail" ];
   };
 
   # Enable networking
