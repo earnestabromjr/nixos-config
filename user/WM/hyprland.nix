@@ -1,11 +1,15 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    plugins = [
-      pkgs.hyprlandPlugins.hyprexpo
-    ];
-    systemd.variables = ["--all"];
+
+    systemd.variables = [ "--all" ];
     # recommendedEnvironment = false;
     # nvidiaPatches = true;
 
@@ -20,7 +24,7 @@
       ];
 
       input = {
-        kb_layout = "";
+        kb_layout = "us";
         kb_variant = "ffffff";
         kb_model = "";
         kb_options = "caps:escape";
@@ -76,29 +80,29 @@
         force_split = 0;
       };
 
-      master = { 
+      master = {
         mfact = 0.65;
         new_status = "slave";
       };
 
       gestures = {
-        workspace_swipe = "yes";
-        workspace_swipe_fingers = 4;
+        # workspace_swipe = "yes";
+        # workspace_swipe_fingers = 4;
       };
 
       # example window rules
       # for windows named/classed as abc and xyz
       # windowrule = "move 69 420,abc";
       windowrule = [
-        "move center,title:^(fly_is_kitty)$"
-        "size 800 500,title:^(fly_is_kitty)$"
-        "animation slide,title:^(all_is_kitty)$"
-        "float,title:^(all_is_kitty)$"
-        # "tile,xy"
-        "tile,title:^(kitty)$"
-        "float,title:^(fly_is_kitty)$"
-        "float,title:^(clock_is_kitty)$"
-        "size 418 234,title:^(clock_is_kitty)$"
+        # "move center,title:^(fly_is_kitty)$"
+        # "size 800 500,title:^(fly_is_kitty)$"
+        # "animation slide,title:^(all_is_kitty)$"
+        # "float,title:^(all_is_kitty)$"
+        # # "tile,xy"
+        # "tile,title:^(kitty)$"
+        # "float,title:^(fly_is_kitty)$"
+        # "float,title:^(clock_is_kitty)$"
+        # "size 418 234,title:^(clock_is_kitty)$"
         # "pseudo,abc"
         # "monitor 0,xyz"
       ];
@@ -164,11 +168,10 @@
         "$mod, g, togglegroup"
         "$mod, tab, changegroupactive"
         # rec
-        "CTRL, 1, exec, kitty --title fly_is_kitty --hold cava"
-        "CTRL, 2, exec, code"
-        "CTRL, 3, exec, kitty --single-instance --hold donut.c"
-        "CTRL, 4, exec, kitty --title clock_is_kitty --hold tty-clock -C5"
-        "SUPER, grave, hyprexpo:expo, toggle"
+        # "CTRL, 1, exec, kitty --title fly_is_kitty --hold cava"
+        # "CTRL, 2, exec, code"
+        # "CTRL, 3, exec, kitty --single-instance --hold donut.c"
+        # "CTRL, 4, exec, kitty --title clock_is_kitty --hold tty-clock -C5"
       ];
     };
   };

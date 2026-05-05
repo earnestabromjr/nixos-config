@@ -1,16 +1,23 @@
 { pkgs, ... }:
 {
   # Enable common container config files in /etc/containers
-  virtualisation.containers.enable = true;
+
   virtualisation = {
+    hypervGuest.enable = true;
+    containers.enable = true;
+    docker.enable = true;
     podman = {
       enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
+      dockerCompat = false;
       defaultNetwork.settings.dns_enabled = true;
+    };
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+        swtpm.package = pkgs.swtpm;
+        package = pkgs.qemu_kvm;
+      };
     };
   };
 

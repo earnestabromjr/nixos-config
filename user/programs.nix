@@ -33,5 +33,10 @@
     tmux.plugins = with pkgs; [
       tmuxPlugins.tokyo-night-tmux
     ];
+
+    awscli = {
+      enable = true;
+      package = pkgs.awscli2;
+    };
   };
 }

@@ -10,7 +10,7 @@
   imports = (if lazyvimModule != null then [ lazyvimModule ] else [ ]) ++ [
     # ./user/shells/sh.nix
     # ./user/terminals/kitty.nix
-    # ./user/WM/hyprland.nix
+    ./user/WM/hyprland.nix
     ./user/programs.nix
   ];
 
@@ -141,6 +141,7 @@
     tmuxPlugins.tokyo-night-tmux
     statix
     lazydocker
+    obsidian
   ];
 
   services = {

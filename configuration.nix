@@ -18,6 +18,7 @@
     ./system/virt.nix
     ./system/containers/pegaprox.nix
     ./system/WM/qtile.nix
+    ./system/WM/hyprland.nix
     ./system/WM/dms.nix
   ];
 
@@ -40,7 +41,10 @@
   fileSystems."/mnt/riot" = {
     device = "/dev/mapper/arch";
     fsType = "btrfs";
-    options = [ "defaults" "nofail" ];
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   # Enable networking
@@ -112,6 +116,7 @@
       "qemu"
       "kvm"
       "libvirtd"
+      "docker"
       "sshd"
       "audio"
       "video"
@@ -191,9 +196,11 @@
     packer
     luajitPackages.lua-lsp
     kdePackages.qt6ct
+    nixfmt
+    qdirstat
+    virt-manager
+    qemu-utils
   ];
-
-  virtualisation.libvirtd.enable = true;
 
   # XDG
   xdg.portal = {
@@ -234,8 +241,8 @@
         "flakes"
       ];
       auto-optimise-store = true;
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      # substituters = [ "https://hyprland.cachix.org" ];
+      # trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
   };
 
