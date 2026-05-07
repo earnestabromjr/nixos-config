@@ -10,6 +10,9 @@
   ...
 }:
 
+let
+  ns = pkgs.writeShellScriptBin "ns" (builtins.readFile ./nixpkgs.sh);
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -146,6 +149,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
   environment.systemPackages = with pkgs; [
     inputs.home-manager.packages.${pkgs.system}.home-manager
     vim
@@ -200,6 +204,9 @@
     qdirstat
     virt-manager
     qemu-utils
+    nix-search-tv
+    ns
+    inputs.nix-software-center.packages.${system}.nix-software-center
   ];
 
   # XDG
@@ -258,6 +265,11 @@
       nerd-fonts.caskaydia-cove
     ];
     fontconfig.enable = true;
+  };
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
+      inherit pkgs;
+    };
   };
 
   system.stateVersion = "26.05";

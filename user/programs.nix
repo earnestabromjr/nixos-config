@@ -39,4 +39,5 @@
       package = pkgs.awscli2;
     };
   };
+
 }

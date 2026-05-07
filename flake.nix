@@ -16,12 +16,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim.url = "github:pfassina/lazyvim-nix/v15.13.0";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-software-center.url = "github:snowfallorg/nix-software-center";
   };
 
-  outputs = { self, nixpkgs, home-manager, lazyvim, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      lazyvim,
+      nur,
+      nix-software-center,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       lazyvimModule = lazyvim.homeManagerModules.default;
     in
     {
@@ -32,12 +49,15 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "hm-backup";
-            home-manager.extraSpecialArgs = { inherit lazyvimModule; };
-            home-manager.users.terrya = import ./home.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "hm-backup";
+              extraSpecialArgs = { inherit lazyvimModule; };
+              users.terrya = import ./home.nix;
+            };
           }
+          nur.modules.nixos.default
         ];
       };
 
