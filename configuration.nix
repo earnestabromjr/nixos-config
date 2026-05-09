@@ -205,8 +205,12 @@ in
     virt-manager
     qemu-utils
     nix-search-tv
+    wayvnc
+    realvnc-vnc-viewer
     ns
     inputs.nix-software-center.packages.${system}.nix-software-center
+    turbovnc
+    remmina
   ];
 
   # XDG

@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 {
   # Zsh
@@ -7,6 +7,7 @@
     autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    envExtra = "EDITOR=nvim";
     oh-my-zsh = {
       enable = true;
       theme = "af-magic";
