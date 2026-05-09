@@ -33,6 +33,7 @@
       ".." = "cd ..";
       neovim = "nix run ~/neovim-flake# ";
       homerun = "home-manager switch --flake .";
+      f = "fastfetch";
     };
   };
 }
