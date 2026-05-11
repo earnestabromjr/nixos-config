@@ -212,6 +212,13 @@ in
     turbovnc
     remmina
   ];
+  programs = {
+    nh = {
+      enable = true;
+      clean.enable = true;
+      flake = "/home/terrya/nixos-config";
+    };
+  };
 
   # XDG
   xdg.portal = {

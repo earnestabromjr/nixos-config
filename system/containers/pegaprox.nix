@@ -15,7 +15,7 @@
     ];
     autoStart = true;
   };
-
+  systemd.timers."podman-auto-update".wantedBy = [ "timers.target" ];
   systemd.tmpfiles.rules = [
     "d /var/lib/pegaprox/config 0777 root root -"
     "d /var/lib/pegaprox/logs 0777 root root -"
