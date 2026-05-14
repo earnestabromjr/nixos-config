@@ -215,6 +215,9 @@ in
     ventoy-full
     ventoy-full-qt
   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.12"
+  ];
   programs = {
     nh = {
       enable = true;
