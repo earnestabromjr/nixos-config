@@ -211,6 +211,9 @@ in
     inputs.nix-software-center.packages.${system}.nix-software-center
     turbovnc
     remmina
+    inputs.nixvim.packages.x86_64-linux.default
+    ventoy-full
+    ventoy-full-qt
   ];
   programs = {
     nh = {

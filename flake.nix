@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-software-center.url = "github:snowfallorg/nix-software-center";
-
+    nixvim.url = "github:earnestabromjr/nixvim";
   };
 
   outputs =
@@ -32,6 +32,7 @@
       lazyvim,
       nur,
       nix-software-center,
+      nixvim,
       ...
     }@inputs:
     let
