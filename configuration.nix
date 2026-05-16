@@ -18,7 +18,12 @@ let
     echo "===== Mango session start: $(date) =====" >> "$LOG"
     env >> "$LOG" 2>&1
 
-    # Set Wayland environment
+    # Unset any existing Wayland environment from parent compositor
+    unset WAYLAND_DISPLAY
+    unset DISPLAY
+    unset NIRI_SOCKET
+
+    # Set Wayland environment for our session
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=mangowm
 
