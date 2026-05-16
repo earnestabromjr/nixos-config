@@ -275,7 +275,7 @@ in
         "ALT,Return,spawn,foot"
         "ALT,d,spawn,foot -e yazi"
         "SUPER,d,spawn,rofi -show drun"
-        "ALT,b,spawn,firefox"
+        "ALT,b,spawn,brave"
         "SUPER,Return,spawn,ghostty"
         "CTRL+ALT,t,spawn,foot"
         "SUPER+SHIFT,Return,spawn,alacritty"
@@ -329,8 +329,8 @@ in
         "CTRL,9,view,9"
 
         # Prev/next tag
-        "SUPER,Tab,viewtoleft"
-        "SUPER+SHIFT,Tab,viewtoright"
+        "SUPER,Tab,viewtoright"
+        "SUPER+SHIFT,Tab,viewtoleft"
 
         # Move window to tag
         "ALT+SHIFT,1,tag,1"
