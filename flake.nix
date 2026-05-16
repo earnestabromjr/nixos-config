@@ -17,7 +17,7 @@
     };
     lazyvim.url = "github:pfassina/lazyvim-nix/v15.13.0";
     mangowc = {
-      url = "github:DreamMaoMao/mangowc";
+      url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
@@ -62,12 +62,14 @@
               useUserPackages = true;
               backupFileExtension = "hm-backup";
               extraSpecialArgs = { inherit lazyvimModule; };
-              users.terrya = { ... }: {
-                imports = [
-                  mangowc.hmModules.mango
-                  (import ./home.nix)
-                ];
-              };
+              users.terrya =
+                { ... }:
+                {
+                  imports = [
+                    mangowc.hmModules.mango
+                    (import ./home.nix)
+                  ];
+                };
             };
           }
           nur.modules.nixos.default
