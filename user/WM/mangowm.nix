@@ -365,7 +365,7 @@ in
         "ALT,i,focusdir,up"
         "ALT,e,focusdir,down"
         "ALT,u,focusdir,right"
-        "SUPER+k,focusstack,prev"
+        "SUPER+k,focusdir,prev"
         "SUPER+j,focusstack,next"
 
         # Exchange client
