@@ -278,7 +278,7 @@ in
         "SUPER+SHIFT,Return,spawn,alacritty"
 
         # DMS Integration
-        "ALT,space,spawn,dms ipc call launcher toggle"
+        "SUPER,space,spawn,dms ipc call launcher toggle"
         "SUPER+SHIFT,space,spawn,dms ipc call spotlight toggle"
         "SUPER+SHIFT,v,spawn,dms ipc call clipboard toggle"
         "SUPER+SHIFT,n,spawn,dms ipc call notifications toggle"
