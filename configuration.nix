@@ -242,6 +242,7 @@ in
     swaybg
     start-mango
     mango-session
+    gemini-cli
   ];
 
   programs = {

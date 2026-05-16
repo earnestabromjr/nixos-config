@@ -273,6 +273,7 @@ in
         # Application launchers
         "ALT,Return,spawn,foot"
         "ALT,d,spawn,foot -e yazi"
+        "SUPER,d,spawn,rofi -show drun"
         "ALT,b,spawn,firefox"
         "SUPER,Return,spawn,ghostty"
         "CTRL+ALT,t,spawn,foot"
