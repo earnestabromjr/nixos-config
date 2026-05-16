@@ -15,7 +15,6 @@ in
     autostart_sh = ''
       # mangowc autostart
       swaync >/dev/null 2>&1 &
-      waybar -c ~/.config/mango/config.jsonc -s ~/.config/mango/style.css >/dev/null 2>&1 &
       if ! dms ipc call wallpaper get >/dev/null 2>&1; then
         swaybg -i ~/Pictures/wallpapers/wallhaven-purpleworld.jpg >/dev/null 2>&1 &
       fi
@@ -394,7 +393,6 @@ in
         "SUPER+SHIFT,minus,incnmaster,-1"
         "SUPER+CTRL,equal,setmfact,+0.05"
         "SUPER+CTRL,minus,setmfact,-0.05"
-        "SUPER+CTRL,BackSpace,default_mfact,0.55"
 
         # Gaps
         "SUPER+CTRL+SHIFT,equal,incgaps,+2"

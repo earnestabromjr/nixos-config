@@ -31,6 +31,7 @@
   programs.lazyvim = {
     enable = true;
     installCoreDependencies = true;
+    configFiles = ./user/editors/my-lazyvim-nix;
     config.options = ''
       vim.opt.directory = vim.fn.expand("~/.local/share/nvim/swap//")
     '';

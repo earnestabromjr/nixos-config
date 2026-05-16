@@ -151,31 +151,38 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 ---
 
 ### Mango WM Integration
-- **System-level**: `programs.mango.enable = true` is in `configuration.nix:219`, provided by `mangowc.nixosModules.mango` from `flake.nix`
+- **System-level**: `programs.mango.enable = true` is in `configuration.nix:250`, provided by `mangowc.nixosModules.mango` from `flake.nix`
 - **User-level**: `wayland.windowManager.mango.settings` in `user/WM/mangowm.nix` generates `~/.config/mango/config.conf`
-- **Waybar config**: Maintained via stow in `~/.dotfiles/mangowc/.config/mango/config.jsonc` + `style.css`
+- **Session wrapper**: `start-mango` in `configuration.nix:16-33` wraps session launch with env setup (Wayland env, env import); custom `.desktop` at `configuration.nix:34-46` overrides the bare `Exec=mango` from upstream
+- **DMS as bar**: DMS-Shell (`system/WM/dms.nix`) provides the panel — Waybar is NOT started in autostart to avoid double bars
 - **DMS scripts**: Audio/notifications/night-light helpers in `~/.dotfiles/mangowc/.config/mango/scripts/`
-- **Autostart**: `exec-once` managed by home-manager module; generates `~/.config/mango/autostart.sh`
+- **Autostart**: `exec-once` managed by home-manager module in `user/WM/mangowm.nix:15-26`; generates `~/.config/mango/autostart.sh`
 - **Rebuild**: `nixrebuild` applies both system and user config atomically
 - **Selecting Mango**: Available in display manager session list after rebuild
 
 ## Quick Reference — Common Changes
 
 **Add a system package:**
-→ Edit `environment.systemPackages` in `configuration.nix:144-211`
+→ Edit `environment.systemPackages` in `configuration.nix:177-246`
 
 **Add a user package:**
-→ Edit `home.packages` in `home.nix:105-145`
+→ Edit `home.packages` in `home.nix:106-146`
 
 **Modify Hyprland keybinds:**
 → Edit `bind` array in `user/WM/hyprland.nix:119-175`
 
 **Modify Mango WM keybinds/settings:**
 → Edit `user/WM/mangowm.nix` settings (effects, binds, rules, tags, colors)
-→ Waybar styling: edit stow-managed `~/.dotfiles/mangowc/.config/mango/style.css`
+→ DMS bar config: `~/.dotfiles/mangowc/.config/mango/config.jsonc` + `style.css` (stow-managed)
+
+**Modify mango session wrapper:**
+→ Edit `start-mango` script in `configuration.nix:16-33`
 
 **Change shell aliases:**
-→ Edit `home.shellAliases` in `home.nix:87-102`
+→ Edit `home.shellAliases` in `home.nix:88-103`
+
+**Add a flake input:**
+→ Add to `inputs` in `flake.nix:4-29`, then pass in `specialArgs` and/or `nixosSystem` call
 
 **Add a flake input:**
 → Add to `inputs` in `flake.nix:4-29`, then pass in `specialArgs` and/or `nixosSystem` call

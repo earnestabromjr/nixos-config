@@ -12,6 +12,32 @@
 
 let
   ns = pkgs.writeShellScriptBin "ns" (builtins.readFile ./nixpkgs.sh);
+  mangoPkg = inputs.mangowc.packages.${pkgs.system}.mango;
+  start-mango = pkgs.writeShellScriptBin "start-mango" ''
+    LOG=/tmp/mango-start.log
+    echo "===== Mango session start: $(date) =====" >> "$LOG"
+    env >> "$LOG" 2>&1
+
+    # Set Wayland environment
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=mangowm
+
+    echo "Starting mango..." >> "$LOG"
+    exec ${mangoPkg}/bin/mango -d >> "$LOG" 2>&1
+  '';
+  mango-session = pkgs.runCommandLocal "mango-session" { passthru.providedSessions = [ "mango" ]; } ''
+    mkdir -p $out/share/wayland-sessions
+    cat > $out/share/wayland-sessions/mango.desktop <<EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=Mango WM
+DesktopNames=mangowm;wlroots
+Comment=Mango Wayland compositor
+Exec=${start-mango}/bin/start-mango
+Icon=mango
+Type=Application
+EOF
+  '';
 in
 {
   imports = [
@@ -83,6 +109,7 @@ in
   # services.displayManager.gdm.enable = true;
   # services.displayManager.defaultSession = "niri";
   services.desktopManager.gnome.enable = true;
+  services.displayManager.sessionPackages = [ mango-session ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -208,6 +235,8 @@ in
     wmenu
     slurp
     swaybg
+    start-mango
+    mango-session
   ];
 
   programs = {
