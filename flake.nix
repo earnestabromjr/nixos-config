@@ -16,6 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lazyvim.url = "github:pfassina/lazyvim-nix/v15.13.0";
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +34,7 @@
       nixpkgs,
       home-manager,
       lazyvim,
+      mangowc,
       nur,
       nix-software-center,
       nixvim,
@@ -49,6 +54,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          mangowc.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {

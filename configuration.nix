@@ -130,15 +130,6 @@ in
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
 
-  # Programs
-  programs = {
-    firefox.enable = true;
-    appimage = {
-      enable = true;
-      binfmt = true;
-    };
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate =
@@ -197,7 +188,6 @@ in
     ansible-lint
     sshpass
     terraform
-    packer
     luajitPackages.lua-lsp
     kdePackages.qt6ct
     nixfmt
@@ -212,17 +202,25 @@ in
     turbovnc
     remmina
     inputs.nixvim.packages.x86_64-linux.default
-    ventoy-full
-    ventoy-full-qt
+    foot
+    wl-clipboard
+    grim
+    wmenu
+    slurp
+    swaybg
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
-  ];
+
   programs = {
     nh = {
       enable = true;
       clean.enable = true;
       flake = "/home/terrya/nixos-config";
+    };
+    mangowc.enable = true;
+    firefox.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
     };
   };
 
