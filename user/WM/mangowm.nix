@@ -14,6 +14,7 @@ in
 
     autostart_sh = ''
       # mangowc autostart
+      dms run &
       swaync >/dev/null 2>&1 &
       if ! dms ipc call wallpaper get >/dev/null 2>&1; then
         swaybg -i ~/Pictures/wallpapers/wallhaven-purpleworld.jpg >/dev/null 2>&1 &
