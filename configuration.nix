@@ -216,7 +216,7 @@ in
       clean.enable = true;
       flake = "/home/terrya/nixos-config";
     };
-    mangowc.enable = true;
+    mango.enable = true;
     firefox.enable = true;
     appimage = {
       enable = true;

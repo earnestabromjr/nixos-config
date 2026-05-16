@@ -68,6 +68,7 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 | Module | What it does |
 |---|---|
 | `user/WM/hyprland.nix` | Hyprland keybinds, window rules, animations, monitor config, GTK theme |
+| `user/WM/mangowm.nix` | Mango WM config (settings via `wayland.windowManager.mango`): effects, animations, keybinds, window rules, tag rules, dms IPC binds, autostart |
 | `user/programs.nix` | direnv, eza, claude-code, opencode, television, tmux plugins, AWS CLI |
 | `user/editors/zed-editor.nix` | Zed editor configuration |
 | `user/editors/lsp-linters.nix` | LSP/linter configs for various languages |
@@ -85,7 +86,7 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 | `quickshell` | Qt-based shell components | `system/WM/dms.nix` |
 | `dms-plugin-registry` | DMS-Shell plugins | `system/WM/dms.nix` |
 | `lazyvim` | LazyVim Neovim framework | `home.nix` (via `lazyvimModule`) |
-| `mangowc` | Window swallow/compositor util | `flake.nix`, `configuration.nix` |
+| `mangowc` | Mango WM Wayland compositor (dwl-based, scenic animations, tags) | `flake.nix`, `configuration.nix`, `user/WM/mangowm.nix` |
 | `nur` | Nix User Repository | `flake.nix`, `configuration.nix` |
 | `nix-software-center` | GUI package manager | `configuration.nix` |
 | `nixvim` | Custom nixvim Neovim build | `configuration.nix` (system package) |
@@ -129,7 +130,7 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 ### Desktop Environments Active
 - **COSMIC** (primary, systemd-boot entry)
 - **GNOME** (secondary)
-- Hyprland, Qtile, DMS-Shell (available via display manager selection)
+- Hyprland, Qtile, DMS-Shell, Mango WM (available via display manager selection)
 
 ### Key Aliases (in `home.nix`)
 | Alias | Command |
@@ -149,6 +150,15 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 
 ---
 
+### Mango WM Integration
+- **System-level**: `programs.mango.enable = true` is in `configuration.nix:219`, provided by `mangowc.nixosModules.mango` from `flake.nix`
+- **User-level**: `wayland.windowManager.mango.settings` in `user/WM/mangowm.nix` generates `~/.config/mango/config.conf`
+- **Waybar config**: Maintained via stow in `~/.dotfiles/mangowc/.config/mango/config.jsonc` + `style.css`
+- **DMS scripts**: Audio/notifications/night-light helpers in `~/.dotfiles/mangowc/.config/mango/scripts/`
+- **Autostart**: `exec-once` managed by home-manager module; generates `~/.config/mango/autostart.sh`
+- **Rebuild**: `nixrebuild` applies both system and user config atomically
+- **Selecting Mango**: Available in display manager session list after rebuild
+
 ## Quick Reference — Common Changes
 
 **Add a system package:**
@@ -159,6 +169,10 @@ This is a **flake-based NixOS 26.05** config for a single machine (`nixos`). Hom
 
 **Modify Hyprland keybinds:**
 → Edit `bind` array in `user/WM/hyprland.nix:119-175`
+
+**Modify Mango WM keybinds/settings:**
+→ Edit `user/WM/mangowm.nix` settings (effects, binds, rules, tags, colors)
+→ Waybar styling: edit stow-managed `~/.dotfiles/mangowc/.config/mango/style.css`
 
 **Change shell aliases:**
 → Edit `home.shellAliases` in `home.nix:87-102`

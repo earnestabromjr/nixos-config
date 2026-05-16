@@ -54,7 +54,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          mangowc.nixosModules.default
+          mangowc.nixosModules.mango
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -62,7 +62,12 @@
               useUserPackages = true;
               backupFileExtension = "hm-backup";
               extraSpecialArgs = { inherit lazyvimModule; };
-              users.terrya = import ./home.nix;
+              users.terrya = { ... }: {
+                imports = [
+                  mangowc.hmModules.mango
+                  (import ./home.nix)
+                ];
+              };
             };
           }
           nur.modules.nixos.default
@@ -73,7 +78,10 @@
       homeConfigurations.terrya = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit lazyvimModule; };
-        modules = [ ./home.nix ];
+        modules = [
+          mangowc.hmModules.mango
+          ./home.nix
+        ];
       };
     };
 }

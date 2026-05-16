@@ -11,6 +11,7 @@
     # ./user/shells/sh.nix
     # ./user/terminals/kitty.nix
     ./user/WM/hyprland.nix
+    ./user/WM/mangowm.nix
     ./user/programs.nix
   ];
 
