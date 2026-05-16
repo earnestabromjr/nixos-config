@@ -273,7 +273,7 @@ in
         "ALT,Return,spawn,foot"
         "ALT,d,spawn,foot -e yazi"
         "ALT,b,spawn,firefox"
-        "SUPER,Return,spawn,foot"
+        "SUPER,Return,spawn,ghostty"
         "CTRL+ALT,t,spawn,foot"
         "SUPER+SHIFT,Return,spawn,alacritty"
 
@@ -378,7 +378,7 @@ in
         "SUPER+SHIFT,period,focusstack,next"
 
         # Layouts
-        "SUPER,space,switch_layout"
+        "SUPER+ALT,space,switch_layout"
         "ALT,t,setlayout,tile"
         "ALT,s,setlayout,scroller"
         "ALT,m,setlayout,monocle"
