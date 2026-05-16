@@ -133,6 +133,7 @@ in
 
       # ---- Input ----
       repeat_rate = 25;
+      xkb_rules_options = "caps:swapescape";
       repeat_delay = 600;
       numlockon = 1;
       disable_trackpad = 0;
