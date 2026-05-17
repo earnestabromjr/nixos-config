@@ -9,7 +9,7 @@
 {
   imports = (if lazyvimModule != null then [ lazyvimModule ] else [ ]) ++ [
     # ./user/shells/sh.nix
-    # ./user/terminals/kitty.nix
+    ./user/terminals/foot.nix
     ./user/WM/hyprland.nix
     ./user/WM/mangowm.nix
     ./user/programs.nix
@@ -144,6 +144,7 @@
     statix
     lazydocker
     obsidian
+    kitty
   ];
 
   services = {

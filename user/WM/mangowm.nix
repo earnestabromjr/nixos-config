@@ -279,6 +279,7 @@ in
         "SUPER,Return,spawn,ghostty"
         "CTRL+ALT,t,spawn,foot"
         "SUPER+SHIFT,Return,spawn,alacritty"
+        "SUPER,n,spawn,foot -e ns"
 
         # DMS Integration
         "SUPER,space,spawn,dms ipc call launcher toggle"
