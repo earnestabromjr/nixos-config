@@ -38,6 +38,12 @@
       enable = true;
       package = pkgs.awscli2;
     };
+
+    # File manager
+    yazi = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
 }
