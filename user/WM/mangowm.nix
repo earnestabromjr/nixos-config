@@ -272,7 +272,7 @@ in
         "SUPER,r,reload_config"
 
         # Application launchers
-        "ALT,Return,spawn,foot"
+        "ALT,Return,spawn,kitty"
         "ALT,d,spawn,foot -e yazi"
         "SUPER,d,spawn,rofi -show drun"
         "ALT,b,spawn,brave"
