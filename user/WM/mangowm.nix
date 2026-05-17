@@ -449,6 +449,17 @@ in
         "ALT+SHIFT+CTRL,q,quit"
       ];
 
+      mousebind = [
+        "SUPER,btn_left,moveresize,curmove"
+        "SUPER,btn_right,moveresize,curresize"
+        "SUPER,btn_middle,cycle_layout"
+      ];
+
+      axisbind = [
+        "SUPER,UP,viewtoleft_have_client"
+        "SUPER,DOWN,viewtoright_have_client"
+      ];
+
       # ---- Resize Mode (keymode) ----
       keymode = {
         resize = {
