@@ -452,7 +452,6 @@ in
       mousebind = [
         "SUPER,btn_left,moveresize,curmove"
         "SUPER,btn_right,moveresize,curresize"
-        "SUPER,btn_middle,cycle_layout"
       ];
 
       axisbind = [
