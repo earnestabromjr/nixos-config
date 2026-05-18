@@ -17,6 +17,13 @@
       git = true;
     };
 
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
+    };
+
     claude-code = {
       enable = true;
     };
@@ -47,6 +54,13 @@
     yazi = {
       enable = true;
       enableZshIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = true;
     };
   };
 
