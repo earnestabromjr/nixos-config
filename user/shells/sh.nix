@@ -1,4 +1,4 @@
-{ _ }:
+{ ... }:
 
 {
   # Zsh
@@ -20,6 +20,9 @@
         "zoxide"
         "zsh-interactive-cd"
         "zsh-navigation-tools"
+        "themes"
+        "tmux"
+        "direnv"
       ];
     };
     shellAliases = {

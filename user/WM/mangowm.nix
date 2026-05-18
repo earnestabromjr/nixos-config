@@ -274,7 +274,7 @@ in
         # Application launchers
         "ALT,Return,spawn,kitty"
         "ALT,d,spawn,foot -e yazi"
-        "SUPER,d,spawn,rofi -show drun"
+        "SUPER,d,spawn,~/.config/rofi/launchers/type-1/launcher.sh"
         "ALT,b,spawn,brave"
         "SUPER,Return,spawn,ghostty"
         "CTRL+ALT,t,spawn,foot"

@@ -31,17 +31,17 @@ let
     exec ${mangoPkg}/bin/mango -d >> "$LOG" 2>&1
   '';
   mango-session = pkgs.runCommandLocal "mango-session" { passthru.providedSessions = [ "mango" ]; } ''
-    mkdir -p $out/share/wayland-sessions
-    cat > $out/share/wayland-sessions/mango.desktop <<EOF
-[Desktop Entry]
-Encoding=UTF-8
-Name=Mango WM
-DesktopNames=mangowm;wlroots
-Comment=Mango Wayland compositor
-Exec=${start-mango}/bin/start-mango
-Icon=mango
-Type=Application
-EOF
+        mkdir -p $out/share/wayland-sessions
+        cat > $out/share/wayland-sessions/mango.desktop <<EOF
+    [Desktop Entry]
+    Encoding=UTF-8
+    Name=Mango WM
+    DesktopNames=mangowm;wlroots
+    Comment=Mango Wayland compositor
+    Exec=${start-mango}/bin/start-mango
+    Icon=mango
+    Type=Application
+    EOF
   '';
 in
 {
@@ -51,6 +51,7 @@ in
     ./system/services.nix
     ./system/virt.nix
     ./system/containers/pegaprox.nix
+    ./system/containers/my-dev.nix
     ./system/WM/qtile.nix
     ./system/WM/hyprland.nix
     ./system/WM/dms.nix
@@ -86,6 +87,11 @@ in
     hostName = "nixos";
     networkmanager.enable = true;
     firewall.enable = false;
+    nat = {
+      enable = true;
+      internalInterfaces = [ "ve-+*" ];
+      externalInterface = "wlp0s20f3";
+    };
   };
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -248,7 +254,6 @@ in
   programs = {
     nh = {
       enable = true;
-      clean.enable = true;
       flake = "/home/terrya/nixos-config";
     };
     mango.enable = true;

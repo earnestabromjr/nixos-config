@@ -4,7 +4,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "JetBrainsMono Nerd Font Mono:size=20.0";
+        font = "JetBrainsMono Nerd Font Mono:size=18.0";
         dpi-aware = "yes";
       };
       scrollback = {
