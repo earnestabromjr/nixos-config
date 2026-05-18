@@ -21,6 +21,10 @@
       enable = true;
     };
 
+    gemini-cli = {
+      enable = true;
+    };
+
     opencode = {
       enable = true;
     };
