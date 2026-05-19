@@ -89,9 +89,6 @@
           neovim
           inputs.home-manager.packages.${pkgs.system}.home-manager
         ];
-        imports = [
-          inputs.home-manager.nixosModules.home-manager
-        ];
 
         # Create a user to work as
         users.users.devuser = {
