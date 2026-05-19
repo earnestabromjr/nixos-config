@@ -6,8 +6,8 @@
 }:
 
 {
-  containers.my-dev = {
-    autoStart = true;
+  containers.dev-env = {
+    autoStart = false;
 
     # Enable private networking so it has its own isolated IP address
     privateNetwork = true;
@@ -22,19 +22,36 @@
       { config, pkgs, ... }:
       {
         system.stateVersion = "26.05"; # Make sure this matches your host's stateVersion
+        nixpkgs.config.allowUnfree = true;
 
         # Install your development tools here
         environment.systemPackages = with pkgs; [
+          # Nix ecosystem
+          nix
+          nixpkgs-fmt
+          alejandra
+          nixd
+          nil
+          nixfmt
+          direnv
+
+          # Version control
           git
-          neovim
+          lazygit
+          github-cli
+
+          # Programming languages
           python3
           nodejs
+          rustup
+          go
           gcc
+          cmake
           zoxide
           fzf
           tmux
-          direnv
           ghostty
+          neovim
         ];
         imports = [
           inputs.home-manager.nixosModules.home-manager
@@ -45,6 +62,8 @@
           users.devuser = {
             imports = [
               ../../user/shells/sh.nix
+              ../../user/shells/nushell.nix
+              ../../user/programs.nix
             ];
             home.stateVersion = "26.05";
           };
