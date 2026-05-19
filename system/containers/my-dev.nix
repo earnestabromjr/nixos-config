@@ -87,22 +87,11 @@
           tmux
           ghostty
           neovim
+          inputs.home-manager.packages.${pkgs.system}.home-manager
         ];
         imports = [
           inputs.home-manager.nixosModules.home-manager
         ];
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.devuser = {
-            imports = [
-              ../../user/shells/sh.nix
-              ../../user/shells/nushell.nix
-              ../../user/programs.nix
-            ];
-            home.stateVersion = "26.05";
-          };
-        };
 
         # Create a user to work as
         users.users.devuser = {
