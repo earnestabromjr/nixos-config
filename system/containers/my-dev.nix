@@ -23,6 +23,24 @@
       {
         system.stateVersion = "26.05"; # Make sure this matches your host's stateVersion
         nixpkgs.config.allowUnfree = true;
+        nixpkgs.config.allowUnfreePredicate = true;
+
+        # Nix features
+        nix = {
+          gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 7d";
+          };
+          settings = {
+            warn-dirty = false;
+            experimental-features = [
+              "nix-command"
+              "flakes"
+            ];
+            auto-optimise-store = true;
+          };
+        };
 
         # Install your development tools here
         environment.systemPackages = with pkgs; [
