@@ -22,6 +22,11 @@
       { config, pkgs, ... }:
       {
         system.stateVersion = "26.05"; # Make sure this matches your host's stateVersion
+        
+        # Route internet traffic out through the host's IP
+        networking.defaultGateway = "192.168.100.10";
+        networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
+
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.allowUnfreePredicate = true;
 
