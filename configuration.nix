@@ -86,10 +86,18 @@ in
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
-    firewall.enable = false;
+    firewall = {
+      enable = true;
+      trustedInterfaces = [ "ve-+" ];
+      # Disable reverse path filtering (fixes container packet drops)
+      checkReversePath = false;
+      # Allow all ports to mimic your previous 'firewall.enable = false' behavior
+      allowedTCPPortRanges = [ { from = 1; to = 65535; } ];
+      allowedUDPPortRanges = [ { from = 1; to = 65535; } ];
+    };
     nat = {
       enable = true;
-      internalInterfaces = [ "ve-+*" ];
+      internalInterfaces = [ "ve-+" ];
       externalInterface = "wlp0s20f3";
     };
   };
