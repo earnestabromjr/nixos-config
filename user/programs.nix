@@ -62,6 +62,11 @@
       enableFishIntegration = true;
       enableNushellIntegration = true;
     };
+
+    windsurf = {
+      enable = true;
+      mutableExtensionsDir = true;
+    };
   };
 
 }

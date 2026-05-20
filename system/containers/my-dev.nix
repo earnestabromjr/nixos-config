@@ -40,7 +40,6 @@
         ];
 
         nixpkgs.config.allowUnfree = true;
-        nixpkgs.config.allowUnfreePredicate = true;
 
         # Nix features
         nix = {

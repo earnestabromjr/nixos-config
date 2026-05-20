@@ -92,8 +92,18 @@ in
       # Disable reverse path filtering (fixes container packet drops)
       checkReversePath = false;
       # Allow all ports to mimic your previous 'firewall.enable = false' behavior
-      allowedTCPPortRanges = [ { from = 1; to = 65535; } ];
-      allowedUDPPortRanges = [ { from = 1; to = 65535; } ];
+      allowedTCPPortRanges = [
+        {
+          from = 1;
+          to = 65535;
+        }
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 1;
+          to = 65535;
+        }
+      ];
     };
     nat = {
       enable = true;
@@ -178,11 +188,6 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "codeium"
-    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
