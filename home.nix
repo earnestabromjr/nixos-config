@@ -145,6 +145,8 @@
     lazydocker
     obsidian
     kitty
+    kiro-fhs
+    kiro-cli
   ];
 
   services = {
