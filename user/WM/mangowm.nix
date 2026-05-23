@@ -332,6 +332,9 @@ in
         # Prev/next tag
         "SUPER,Tab,viewtoright"
         "SUPER+SHIFT,Tab,viewtoleft"
+        
+        "SUPER,Right,viewtoright"
+        "SUPER,Left,viewtoleft"
 
         # Move window to tag
         "ALT+SHIFT,1,tag,1"
@@ -358,8 +361,8 @@ in
         "ALT,Right,focusdir,right"
         "ALT,Up,focusdir,up"
         "ALT,Down,focusdir,down"
-        "SUPER,Left,focusdir,left"
-        "SUPER,Right,focusdir,right"
+        # "SUPER,Left,focusdir,left"
+        # "SUPER,Right,focusdir,right"
         "SUPER,Up,focusdir,up"
         "SUPER,Down,focusdir,down"
         "ALT,o,focusdir,left"
