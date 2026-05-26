@@ -9,6 +9,7 @@
 {
   imports = (if lazyvimModule != null then [ lazyvimModule ] else [ ]) ++ [
     # ./user/shells/sh.nix
+    ./user/shells/nushell.nix
     ./user/terminals/foot.nix
     ./user/WM/hyprland.nix
     ./user/WM/mangowm.nix
