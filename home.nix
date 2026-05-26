@@ -97,7 +97,7 @@
       cd = "z";
       ".." = "cd ..";
       nixrebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos && sudo systemctl daemon-reload";
-      neovim = "nix run ~/neovim-flake# ";
+      neovim = "nix run ~/nixos-config/nixvim# ";
       vl = "NVIM_APPNAME=lazyvim nvim";
       homerun = "home-manager switch --flake .#terrya";
       dbeb = "distrobox enter ubuntu";
@@ -150,6 +150,9 @@
     kiro-cli
     devenv
     pre-commit
+    just
+    just-formatter
+    just-lsp
   ];
 
   services = {
