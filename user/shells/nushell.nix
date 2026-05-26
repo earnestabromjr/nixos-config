@@ -5,7 +5,7 @@
   programs.nushell = {
     enable = true;
     shellAliases = {
-      ls = "ls --color=auto";
+      # ls = "ls --color=auto";
       ll = "ls -l";
       la = "ls -la";
       grep = "grep --color=auto";
