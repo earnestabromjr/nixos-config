@@ -147,6 +147,7 @@
     kitty
     kiro-fhs
     kiro-cli
+    devenv
   ];
 
   services = {
