@@ -28,6 +28,8 @@
         "x86_64-darwin"
       ];
 
+      nixpkgs.config.allowUnfree = true;
+
       perSystem =
         {
           system,
