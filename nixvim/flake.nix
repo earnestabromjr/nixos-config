@@ -28,17 +28,18 @@
         "x86_64-darwin"
       ];
 
-      nixpkgs.config.allowUnfree = true;
-
       perSystem =
         {
           system,
-          pkgs,
           self',
           lib,
           ...
         }:
         let
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
           nixvimModule = {
