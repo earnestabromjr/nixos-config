@@ -149,6 +149,7 @@
     kiro-fhs
     kiro-cli
     devenv
+    pre-commit
   ];
 
   services = {
