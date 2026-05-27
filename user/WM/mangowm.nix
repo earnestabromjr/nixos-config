@@ -332,7 +332,7 @@ in
         # Prev/next tag
         "SUPER,Tab,viewtoright"
         "SUPER+SHIFT,Tab,viewtoleft"
-        
+
         "SUPER,Right,viewtoright"
         "SUPER,Left,viewtoleft"
 
@@ -390,9 +390,9 @@ in
         "SUPER+ALT,space,switch_layout"
         "ALT,t,setlayout,tile"
         "ALT,s,setlayout,scroller"
-        "ALT,m,setlayout,monocle"
-        "ALT,g,setlayout,grid"
-        "ALT,d,setlayout,deck"
+        "SUPER+ALT,m,setlayout,monocle"
+        "SUPER+ALT,g,setlayout,grid"
+        "SUPER+ALT,d,setlayout,deck"
         "ALT+SHIFT,t,setlayout,center_tile"
         "ALT+SHIFT,s,setlayout,vertical_scroller"
         "ALT+SHIFT,g,setlayout,vertical_grid"
