@@ -13,7 +13,7 @@
       egrep = "egrep --color=auto";
       cd = "z";
       ".." = "cd ..";
-      neovim = "nix run ~/neovim-flake# ";
+      neovim = "nix run ~/nixos-config/nixvim# ";
       homerun = "home-manager switch --flake .";
       f = "fastfetch";
     };
