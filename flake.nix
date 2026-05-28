@@ -15,7 +15,7 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
     lazyvim.url = "github:pfassina/lazyvim-nix/v15.13.0";
     mangowc = {
       url = "github:mangowm/mango";
