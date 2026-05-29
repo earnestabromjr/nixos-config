@@ -120,7 +120,7 @@ in
   services.desktopManager.cosmic.enable = true;
   # services.displayManager.gdm.enable = true;
   # services.displayManager.defaultSession = "niri";
-  services.desktopManager.gnome.enable = true;
+  # services.desktopManager.gnome.enable = true;
   services.displayManager.sessionPackages = [ mango-session ];
 
   # Configure keymap in X11
@@ -284,6 +284,9 @@ in
   #   enableSSHSupport = true;
   # };
 
+  # Enable zram swap (compressed RAM swap, faster than disk swap)
+  zramSwap.enable = true;
+
   # Enable the OpenSSH daemon.
   services = {
     openssh.enable = true;
@@ -304,6 +307,12 @@ in
         "flakes"
       ];
       auto-optimise-store = true;
+      max-jobs = 4;
+      cores = 0;
+      min-free = 1073741824;
+      max-free = 5368709120;
+      keep-outputs = false;
+      keep-derivations = false;
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
@@ -322,12 +331,6 @@ in
     ];
     fontconfig.enable = true;
   };
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/main.tar.gz") {
-      inherit pkgs;
-    };
-  };
-
   system.stateVersion = "26.05";
 
 }
