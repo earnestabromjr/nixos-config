@@ -124,7 +124,7 @@
     "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
-          "nixvim",
+          "nixvim-local",
           "nixvim",
           "nixpkgs"
         ]
@@ -207,7 +207,7 @@
     "gitignore_2": {
       "inputs": {
         "nixpkgs": [
-          "nixvim",
+          "nixvim-local",
           "pre-commit-hooks",
           "nixpkgs"
         ]
@@ -750,22 +750,6 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
         "lastModified": 1779259093,
         "narHash": "sha256-7DKWmH23hL2eYdkxCKeqj2i+yljTKuU+3Nk1UPHOnxc=",
         "owner": "NixOS",
@@ -780,7 +764,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1770073757,
         "narHash": "sha256-Vy+G+F+3E/Tl+GMNgiHl9Pah2DgShmIUBJXmbiQPHbI=",
@@ -798,29 +782,8 @@
     },
     "nixvim": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
-        "nixpkgs": "nixpkgs_5",
-        "nixvim": "nixvim_2",
-        "pre-commit-hooks": "pre-commit-hooks_2"
-      },
-      "locked": {
-        "lastModified": 1779770932,
-        "narHash": "sha256-hrneDj1QT6m0Eg/TeLt1VK+vxDO/ukvvd1DfCv3MZgI=",
-        "owner": "earnestabromjr",
-        "repo": "nixvim",
-        "rev": "a795e48cf13d2ae79a67a211a30eaf7cf912286a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "earnestabromjr",
-        "repo": "nixvim",
-        "type": "github"
-      }
-    },
-    "nixvim_2": {
-      "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_5",
         "systems": "systems_4"
       },
       "locked": {
@@ -836,6 +799,25 @@
         "repo": "nixvim",
         "type": "github"
       }
+    },
+    "nixvim-local": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixvim": "nixvim",
+        "pre-commit-hooks": "pre-commit-hooks_2"
+      },
+      "locked": {
+        "path": "./nixvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "./nixvim",
+        "type": "path"
+      },
+      "parent": []
     },
     "nur": {
       "inputs": {
@@ -885,7 +867,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore_2",
-        "nixpkgs": "nixpkgs_7"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1778507602,
@@ -930,7 +912,7 @@
         "mangowc": "mangowc",
         "nix-software-center": "nix-software-center",
         "nixpkgs": "nixpkgs_4",
-        "nixvim": "nixvim",
+        "nixvim-local": "nixvim-local",
         "nur": "nur",
         "quickshell": "quickshell"
       }
