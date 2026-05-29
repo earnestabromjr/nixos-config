@@ -100,7 +100,7 @@
       neovim = "nix run ~/nixos-config/nixvim# ";
       vl = "NVIM_APPNAME=lazyvim nvim";
       homerun = "home-manager switch --flake .#terrya";
-      dbeb = "distrobox enter ubuntu";
+      dbea = "distrobox enter arch";
       sudoedit = "sudo -E nvim ";
     };
   };
@@ -153,6 +153,7 @@
     just
     just-formatter
     just-lsp
+    tldr
   ];
 
   services = {
