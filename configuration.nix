@@ -252,7 +252,7 @@ in
     inputs.nix-software-center.packages.${system}.nix-software-center
     turbovnc
     remmina
-    inputs.nixvim.packages.x86_64-linux.default
+    inputs.nixvim-local.packages.x86_64-linux.default
     foot
     wl-clipboard
     grim

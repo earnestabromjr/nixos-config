@@ -26,7 +26,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-software-center.url = "github:snowfallorg/nix-software-center";
-    nixvim.url = "github:earnestabromjr/nixvim";
+    nixvim-local = {
+      url = "path:./nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,7 +41,7 @@
       mangowc,
       nur,
       nix-software-center,
-      nixvim,
+      nixvim-local,
       ...
     }@inputs:
     let
