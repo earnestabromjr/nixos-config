@@ -10,14 +10,14 @@
     enable = true;
 
     systemd.variables = [ "--all" ];
+    configType = "hyprlang";
     # recommendedEnvironment = false;
-    # nvidiaPatches = true;
 
     settings = {
       monitor = ",preferred,auto,1";
 
       exec-once = [
-        "$HOME/.config/hypr/autostart"
+        "../../hypr/autostart"
         "waybar"
         "dunst"
         "nm-applet"
