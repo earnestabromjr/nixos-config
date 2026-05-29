@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -67,6 +65,20 @@ in
     # Enable Containers
     enableContainers = true;
   };
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      (
+        if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11") then
+          vaapiIntel
+        else
+          intel-vaapi-driver
+      )
+    ];
+  };
 
   # Enable networking
   networking = {
@@ -116,7 +128,6 @@ in
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.cosmic-greeter.enable = true;
@@ -127,12 +138,19 @@ in
   services.displayManager.sessionPackages = [ mango-session ];
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "caps:swapescape";
+  services.xserver = {
+    enable = true;
+    videoDrivers = [
+      "i915"
+      "intel"
+    ];
+    xkb = {
+      layout = "us";
+      variant = "";
+      options = "caps:swapescape";
+    };
   };
-
+  services.thermald.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
