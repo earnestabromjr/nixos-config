@@ -65,20 +65,6 @@ in
     # Enable Containers
     enableContainers = true;
   };
-  hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      (
-        if (lib.versionOlder (lib.versions.majorMinor lib.version) "23.11") then
-          vaapiIntel
-        else
-          intel-vaapi-driver
-      )
-    ];
-  };
 
   # Enable networking
   networking = {
@@ -141,7 +127,6 @@ in
   services.xserver = {
     enable = true;
     videoDrivers = [
-      "i915"
       "intel"
     ];
     xkb = {
