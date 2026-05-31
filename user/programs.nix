@@ -2,6 +2,10 @@
 
 {
   programs = {
+    ripgrep.enable = true;
+    fzf.enable = true;
+    bat.enable = true;
+
     direnv = {
       enable = true;
       enableZshIntegration = true;

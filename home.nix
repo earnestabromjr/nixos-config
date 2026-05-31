@@ -110,38 +110,28 @@
     alejandra
     vscode-with-extensions
     vscodium-fhs
-    ripgrep
-    zoxide
     unzip
-    fzf
     fastfetch
     brave
     librewolf
     bitwarden-desktop
     fh
-    git
     gitkraken
     github-cli
-    lazygit
     gnupg
     python3
-    bat
     gcc
-    rustup
     nodejs
     curl
     lua
-    stow
     zed-editor
     antigravity-fhs
-    nixd
     nixdoc
     nil
     prettierd
     live-server
     vscode-extensions.brettm12345.nixfmt-vscode
     ghostty
-    tmuxPlugins.tokyo-night-tmux
     statix
     lazydocker
     obsidian
