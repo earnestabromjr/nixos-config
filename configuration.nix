@@ -242,7 +242,7 @@ in
     turbovnc
     remmina
     inputs.nixvim-local.packages.x86_64-linux.default
-    foot
+    inputs.zen-browser.packages.x86_64-linux.default
     wl-clipboard
     grim
     wmenu
