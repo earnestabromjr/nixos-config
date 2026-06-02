@@ -128,6 +128,7 @@
     antigravity-fhs
     nixdoc
     nil
+    nixd
     prettierd
     live-server
     vscode-extensions.brettm12345.nixfmt-vscode
