@@ -144,6 +144,7 @@
     just-formatter
     just-lsp
     tldr
+    mcp-nixos
   ];
 
   services = {
