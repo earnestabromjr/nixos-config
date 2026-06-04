@@ -21,6 +21,10 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-software-center.url = "github:snowfallorg/nix-software-center";
     nixvim-local = {
       url = "path:./nixvim";
@@ -39,6 +43,7 @@
       home-manager,
       lazyvim,
       mangowc,
+      nixos-hardware,
       nix-software-center,
       nixvim-local,
       zen-browser,

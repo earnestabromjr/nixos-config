@@ -251,6 +251,7 @@ in
     start-mango
     mango-session
     gemini-cli
+    vmware-workstation
   ];
 
   programs = {
